@@ -17,6 +17,27 @@ mkdir myProject && cd myProject
 * sudo npm install -g yo
 * sudo npm install -g generator-angular
 * yo angular
+
+
+    _-----_
+    |       |
+    |--(o)--|   .--------------------------.
+   `---------´  |    Welcome to Yeoman,    |
+    ( _´U`_ )   |   ladies and gentlemen!  |
+    /___A___\   '__________________________'
+     |  ~  |
+   __'.___.'__
+ ´   `  |° ´ Y `
+
+[Yeoman Doctor] Everything looks alright!
+
+
+use space bar to select modules
+
+
+
+
+
 * bower ls
 
  add to git
