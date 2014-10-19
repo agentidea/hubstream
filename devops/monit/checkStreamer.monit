@@ -1,0 +1,6 @@
+#!monit
+set logfile /var/log/monit.log
+
+check process nodejs-hubstream-streamer with pidfile "/var/run/hubstream-streamer.pid"
+    start program = "/sbin/start hubstream-streamer"
+    stop program  = "/sbin/stop hubstream-streamer"

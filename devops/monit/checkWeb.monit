@@ -1,0 +1,10 @@
+#!monit
+set logfile /var/log/monit.log
+
+check process nodejs-for-hubstream-web with pidfile "/var/run/hubstream-web.pid"
+    start program = "/sbin/start hubstream-web"
+    stop program  = "/sbin/stop hubstream-web"
+    if failed port 5000 protocol HTTP
+        request /
+        with timeout 10 seconds
+        then restart

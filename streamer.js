@@ -47,8 +47,10 @@ var github = new GitHub({
 
 github.authenticate({
   type: 'oauth',
-  key: process.env.HUBSTREAM_GITHUB_KEY,
-  secret: process.env.HUBSTREAM_GITHUB_SECRET
+//  key: process.env.HUBSTREAM_GITHUB_KEY,
+  key: '6c386db73e2117d675a9',
+  //secret: process.env.HUBSTREAM_GITHUB_SECRET
+  secret: '846fbefa37417b8f8479e3f402ac49006bf1fe20', 
 });
 
 var geoBackoff = 1000;

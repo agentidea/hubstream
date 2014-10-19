@@ -15,7 +15,7 @@ exports.EVENT_QUEUE = 'event_queue';
 exports.createClient = function () {
   console.log('creating redis client for ' + module.parent.filename);
   var redis = require('redis').createClient(redisPort, redisHost);
-  redis.auth(redisPass);
+  //redis.auth(redisPass);
 
   redis.on('error', function (err) {
     console.log(module.parent.filename + ' Redis Error: ' + err);
