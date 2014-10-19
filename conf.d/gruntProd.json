@@ -1,0 +1,7 @@
+{
+  "key":"my_key",
+  "secret":"my_secret",
+  "host":"127.0.0.1",
+  "port":"80",
+  "description":"** PRODUCTION **"
+}
