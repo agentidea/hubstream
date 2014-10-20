@@ -1,7 +1,7 @@
 {
 
-  "__HUBSTREAM_GITHUB_KEY__":"my_key",
-  "__HUBSTREAM_GITHUB_SECRET__":"my_secret",
+  "__HUBSTREAM_GITHUB_KEY":"my_key",
+  "__HUBSTREAM_GITHUB_SECRET":"my_secret",
   "host":"127.0.0.1",
   "port":"80",
   "description":"** D E V ** :)"

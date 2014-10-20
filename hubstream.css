@@ -46,3 +46,13 @@ a {
   height: 24px;
   vertical-align: middle;
 }
+
+
+a:link.selector_name { color: #000000; text-decoration: none; }
+a:visited.selector_name { color: #000000; text-decoration: none; }
+a:hover.selector_name { color: #000000; text-decoration: none; }
+a:active.selector_name { color: #000000; text-decoration: none; }
+
+.myinfowindow{
+    background-color: #ffffff;
+}

@@ -9,7 +9,8 @@ function initialize() {
     center: new google.maps.LatLng(30, 0),
     zoom: 2,
     disableDefaultUI: true,
-    mapTypeControl: true
+    mapTypeControl: true,
+    mapTypeId: google.maps.MapTypeId.SATELLITE
   });
 
   infowindow = new google.maps.InfoWindow();
@@ -65,30 +66,9 @@ function processEvent(data) {
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(
       '<div class="infowindow">' +
-        '<a target="_blank" href="https://github.com/' + data.user.login + '">' +
-          '<img src="' + data.user.avatar_url + '" class="avatar" alt="' + data.user.login + '" title="' + data.user.login + '">' +
+        '<a class="selector_name" target="_blank" href="https://github.com/' + data.user.login + '">' +
+          data.user.name + ' :: ' + data.user.login + ' :: ' + data.user.location +
         '</a>' +
-        '<div class="data">' +
-          '<ul>' +
-            '<li class="fullname">' + data.user.name + '</li>' +
-            '<li>' +
-              data.user.location +
-            '</li>' +
-            '<li class="data-spacer">&nbsp;</li>' +
-          '</ul>' +
-          '<ul class="github">' +
-            '<li>' +
-              '<a target="_blank" href="https://github.com/' + data.user.login + '">' +
-                '<img src="https://github.com/favicon.ico" class="favicon"></img>' +
-              '</a>' +
-            '</li>' +
-            '<li>' +
-              '<a target="_blank" href="https://github.com/' + data.user.login + '">' + data.user.login +'</a>' +
-            '</li>' +
-            '<li><a target="_blank" href="https://github.com/' + data.event.repo.name + '">' + data.event.repo.name + '</a></li>' +
-            '<li><a target="_blank" href="' + data.event_url + '">' + data.event.type + '</a></li>' +
-          '</ul>' +
-        '</div>' +
       '</div>'
     );
 
