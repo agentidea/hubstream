@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  <title>World Map</title>
+  <link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.css">
+
+  <link rel="stylesheet" href="css/app.css" />
+
+  <script src="../../../bower_components/angular/angular.min.js"></script>
+  <script src="../../../bower_components/jquery/jquery.min.js"></script>
+  <script src="../../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script src="js/logic/worldMapCreator.js"></script>
+  <script src="js/plumbing/app.js"></script>
+  <script src="js/plumbing/standaloneController.js"></script>
+  <script src="js/plumbing/directiveWorldMap.js"></script>
+
+</head>
+<body style="background-color: e0e0e0;">
+  <div ng-app="wsAngular" ng-controller="standaloneCtrl">
+	  <div world-map map-data="mapData"></div>
+  </div>
+</body>
+</html>
