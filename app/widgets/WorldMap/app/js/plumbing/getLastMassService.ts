@@ -1,0 +1,5 @@
+angular.module('wsAngular.services', [])
+.factory('landMassFactory', ['$http', function ($http) {
+   return $http.get('assets/landMass.json');
+    }
+]);
