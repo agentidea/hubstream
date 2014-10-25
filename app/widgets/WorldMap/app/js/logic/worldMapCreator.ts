@@ -1,6 +1,7 @@
 class MapCreator{
     canvas: any;
     ctx: any;
+    __mapData: any;
 
     iCANVAS_START_X_POS: number = 0;
 	iCANVAS_START_Y_POS: number  = 0;
@@ -12,7 +13,11 @@ class MapCreator{
 	iMAP_HEIGHT: number = this.iCANVAS_HEIGHT - (this.iSPACE_FOR_LABEL * 2);
 	iMAP_WIDTH: number = this.iCANVAS_WIDTH - (this.iSPACE_FOR_LABEL * 2);
 
-    constructor(canvas:any){
+    constructor(canvas:any,mapData:any){
+        console.warn("map DATA:");
+        console.log(mapData);
+        this.__mapData = mapData;
+
         if (canvas.getContext) {
             // Grab the context
             this.ctx = canvas.getContext('2d');
@@ -30,18 +35,64 @@ class MapCreator{
         this.drawMapBackground(this.ctx);
         this.drawGraticule(this.ctx);
 
-        var that = this;
+        this.drawLandMass(this.ctx,this.__mapData);
 
-        // One-shot position request. (f supported)
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function (pos) {
-                console.log(pos);
-                that.plotPosition(pos);
-            });
-		}
+
+//        var that = this;
+//
+//        // One-shot position request. (f supported)
+//		if (navigator.geolocation) {
+//			navigator.geolocation.getCurrentPosition(function (pos) {
+//                console.log(pos);
+//                that.plotPosition(pos);
+//            });
+//		}
 
     }
 
+
+
+
+    drawLandMass(ctx, mmm) {
+        var landMass = mmm,
+            iFirstScreenX = 0,
+            iFirstScreenY = 0,
+            shape,
+            iLat,
+            iLon,
+            bFirst = false,
+            iShapeCounter,
+            iPointCouner;
+
+        // A lighter shade of green
+        //ctx.fillStyle = 'rgb(0,204,0)';
+        ctx.fillStyle = 'rgb(51,51,51)';
+
+        // Iterate around the shapes and draw
+        for (iShapeCounter = 0; iShapeCounter < landMass.shapes.length; iShapeCounter++) {
+
+            shape = landMass.shapes[iShapeCounter];
+
+            ctx.beginPath();
+
+            // Draw each point with the shape
+            for (iPointCouner = 0; iPointCouner < shape.length; iPointCouner++) {
+
+                iLon = shape[iPointCouner].lat;
+                iLat = shape[iPointCouner].lon;
+
+                // Before plotting convert the lat/Lon to screen coordinates
+                ctx.lineTo(this.degreesOfLongitudeToScreenX(iLat),
+                    this.degreesOfLatitudeToScreenY(iLon));
+            }
+
+            // Fill the path green
+            ctx.fill();
+            ctx.stroke();
+
+        }
+
+    }
 
     plotPosition(position) {
         // Grab a handle to the canvas

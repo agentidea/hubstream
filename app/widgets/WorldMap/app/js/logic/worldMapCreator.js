@@ -1,5 +1,5 @@
 var MapCreator = (function () {
-    function MapCreator(canvas) {
+    function MapCreator(canvas, mapData) {
         this.iCANVAS_START_X_POS = 0;
         this.iCANVAS_START_Y_POS = 0;
         this.iCANVAS_HEIGHT = 790;
@@ -9,6 +9,10 @@ var MapCreator = (function () {
         this.iMAP_START_Y_POS = this.iCANVAS_START_Y_POS + this.iSPACE_FOR_LABEL;
         this.iMAP_HEIGHT = this.iCANVAS_HEIGHT - (this.iSPACE_FOR_LABEL * 2);
         this.iMAP_WIDTH = this.iCANVAS_WIDTH - (this.iSPACE_FOR_LABEL * 2);
+        console.warn("map DATA:");
+        console.log(mapData);
+        this.__mapData = mapData;
+
         if (canvas.getContext) {
             // Grab the context
             this.ctx = canvas.getContext('2d');
@@ -24,14 +28,41 @@ var MapCreator = (function () {
         this.drawMapBackground(this.ctx);
         this.drawGraticule(this.ctx);
 
-        var that = this;
+        this.drawLandMass(this.ctx, this.__mapData);
+        //        var that = this;
+        //
+        //        // One-shot position request. (f supported)
+        //		if (navigator.geolocation) {
+        //			navigator.geolocation.getCurrentPosition(function (pos) {
+        //                console.log(pos);
+        //                that.plotPosition(pos);
+        //            });
+        //		}
+    };
 
-        // One-shot position request. (f supported)
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (pos) {
-                console.log(pos);
-                that.plotPosition(pos);
-            });
+    MapCreator.prototype.drawLandMass = function (ctx, mmm) {
+        var landMass = mmm, iFirstScreenX = 0, iFirstScreenY = 0, shape, iLat, iLon, bFirst = false, iShapeCounter, iPointCouner;
+
+        // A lighter shade of green
+        //ctx.fillStyle = 'rgb(0,204,0)';
+        ctx.fillStyle = 'rgb(51,51,51)';
+
+        for (iShapeCounter = 0; iShapeCounter < landMass.shapes.length; iShapeCounter++) {
+            shape = landMass.shapes[iShapeCounter];
+
+            ctx.beginPath();
+
+            for (iPointCouner = 0; iPointCouner < shape.length; iPointCouner++) {
+                iLon = shape[iPointCouner].lat;
+                iLat = shape[iPointCouner].lon;
+
+                // Before plotting convert the lat/Lon to screen coordinates
+                ctx.lineTo(this.degreesOfLongitudeToScreenX(iLat), this.degreesOfLatitudeToScreenY(iLon));
+            }
+
+            // Fill the path green
+            ctx.fill();
+            ctx.stroke();
         }
     };
 
