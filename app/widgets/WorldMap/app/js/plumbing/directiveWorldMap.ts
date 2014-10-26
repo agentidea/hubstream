@@ -27,13 +27,13 @@ angular.module('wsAngular').directive('worldMap',
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function (pos) {
                         console.log(pos);
-                        mc.plotPosition(pos);
+                        mc.plotPosition(pos,'rgb(255,0,0)',4);
                     });
                 }
             });
 
             scope.$on('locationUpdate', function(event, latLong) {
-                mc.plotPosition(latLong);
+                mc.plotPosition(latLong,'rgb(255,255,0)',2);
                 //scope.$apply();
             });
 

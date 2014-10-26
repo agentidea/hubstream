@@ -2,7 +2,9 @@
 angular.module('wsAngular.services1', []).factory('gitEventFactory', [
     '$rootScope', function ($rootScope) {
         var host = "";
-        host = "ws://localhost:5000";
+
+        //host ="ws://localhost:5000";
+        host = "ws://162.243.138.188:5000/";
 
         var ws = new WebSocket(host);
         ws.onmessage = function (message) {

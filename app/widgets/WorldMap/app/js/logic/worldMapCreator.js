@@ -56,7 +56,7 @@ var MapCreator = (function () {
         }
     };
 
-    MapCreator.prototype.plotPosition = function (position) {
+    MapCreator.prototype.plotPosition = function (position, fillStyle, radius) {
         // Grab a handle to the canvas
         var canvas = document.getElementById('map'), ctx;
 
@@ -68,12 +68,12 @@ var MapCreator = (function () {
             ctx.beginPath();
 
             // Draw a arc that represent the geo-location of the request
-            ctx.arc(this.degreesOfLongitudeToScreenX(position.coords.longitude), this.degreesOfLatitudeToScreenY(position.coords.latitude), 5, 0, 2 * Math.PI, false);
+            ctx.arc(this.degreesOfLongitudeToScreenX(position.coords.longitude), this.degreesOfLatitudeToScreenY(position.coords.latitude), 5, 0, radius * Math.PI, false);
 
             // Point style
-            ctx.fillStyle = 'rgb(255,255,0)';
+            ctx.fillStyle = fillStyle;
             ctx.fill();
-            ctx.lineWidth = 3;
+            ctx.lineWidth = 1;
             ctx.strokeStyle = "black";
 
             ctx.stroke();

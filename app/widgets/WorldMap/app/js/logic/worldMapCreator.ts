@@ -78,7 +78,7 @@ class MapCreator{
 
     }
 
-    plotPosition(position) {
+    plotPosition(position,fillStyle,radius) {
         // Grab a handle to the canvas
         var canvas = document.getElementById('map'),
             ctx;
@@ -96,14 +96,14 @@ class MapCreator{
                 this.degreesOfLatitudeToScreenY(position.coords.latitude),
                 5,
                 0,
-                2 * Math.PI,
+                radius * Math.PI,
                 false
             );
 
             // Point style
-            ctx.fillStyle = 'rgb(255,255,0)';
+            ctx.fillStyle = fillStyle;
             ctx.fill();
-            ctx.lineWidth = 3;
+            ctx.lineWidth = 1;
             ctx.strokeStyle = "black";
 
             ctx.stroke();
