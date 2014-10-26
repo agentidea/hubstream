@@ -34,24 +34,8 @@ class MapCreator{
         this.drawBackground(this.ctx);
         this.drawMapBackground(this.ctx);
         this.drawGraticule(this.ctx);
-
         this.drawLandMass(this.ctx,this.__mapData);
-
-
-//        var that = this;
-//
-//        // One-shot position request. (f supported)
-//		if (navigator.geolocation) {
-//			navigator.geolocation.getCurrentPosition(function (pos) {
-//                console.log(pos);
-//                that.plotPosition(pos);
-//            });
-//		}
-
     }
-
-
-
 
     drawLandMass(ctx, mmm) {
         var landMass = mmm,

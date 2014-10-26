@@ -1,5 +1,7 @@
 /// <reference path="../../../../../includes/typescript/angular.d.ts" />
-angular.module('wsAngular').directive('worldMap', function ($timeout,landMassFactory) {
+angular.module('wsAngular').directive('worldMap',
+    ['$timeout','landMassFactory','gitEventFactory',
+        function ($timeout,landMassFactory,gitEventFactory) {
     var templateUrl = 'xoxox/widgets/WorldMap/app/template/worldMap.html';
     if (!window.production) {
         templateUrl = 'template/worldMap.html';
@@ -11,20 +13,16 @@ angular.module('wsAngular').directive('worldMap', function ($timeout,landMassFac
         scope: {
             mapData: '='
         },
+
         link: function (scope, element) {
             scope.actionProcessing = false;
             scope.actionComplete = false;
             var _mapData = null;
-
+            var mc = null;
             landMassFactory.success(function(mapDatum) {
-
-
                 var canvas = document.getElementById('map');
-                var mc = new MapCreator(canvas, mapDatum);
+                mc = new MapCreator(canvas, mapDatum);
                 mc.draw();
-
-
-
                 // One-shot position request. (f supported)
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function (pos) {
@@ -32,8 +30,11 @@ angular.module('wsAngular').directive('worldMap', function ($timeout,landMassFac
                         mc.plotPosition(pos);
                     });
                 }
+            });
 
-
+            scope.$on('locationUpdate', function(event, latLong) {
+                mc.plotPosition(latLong);
+                //scope.$apply();
             });
 
 
@@ -42,4 +43,4 @@ angular.module('wsAngular').directive('worldMap', function ($timeout,landMassFac
 
         }
     };
-});
+}]);
