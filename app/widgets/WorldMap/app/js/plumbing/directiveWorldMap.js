@@ -27,14 +27,15 @@ angular.module('wsAngular').directive('worldMap', [
                     if (navigator.geolocation) {
                         navigator.geolocation.getCurrentPosition(function (pos) {
                             console.log(pos);
-                            mc.plotPosition(pos, 'rgb(255,0,0)', 4);
+                            mc.plotPosition(pos, 'rgb(255,0,0)', 12);
                         });
                     }
                 });
 
                 scope.$on('locationUpdate', function (event, latLong) {
                     mc.plotPosition(latLong, 'rgb(255,255,0)', 2);
-                    //scope.$apply();
+                    scope.locationBlob = [latLong.coords.longitude, latLong.coords.latitude];
+                    scope.$apply();
                 });
             }
         };
