@@ -6,7 +6,7 @@ Streaming Github events on a Google Map
 Local
 
     git clone git@github.com:agentidea/hubstream.git
-    
+    git checkout visualizations
 
     at root dir eg: ( cd hubstream )
     sudo npm install
