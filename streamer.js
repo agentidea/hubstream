@@ -6,8 +6,22 @@ var GitHub      = require('github'),
     Redis       = require('./redis');
 
 var redis = Redis.createClient();
-var GITHUB_KEY = 'CP.FROM.KEYS.SECRET:GITHUB_KEY';
-var GITHUB_SECRET = 'CP.FROM.KEYS.SECRET:GITHUB_SECRET';
+var GITHUB_KEY = null;
+var GITHUB_SECRET = null;
+
+if (process.env.GITHUBTOGO_KEY && process.env.GITHUBTOGO_SECRET) {
+
+
+    GITHUB_KEY = process.env.GITHUBTOGO_KEY;
+    GITHUB_SECRET = process.env.GITHUBTOGO_SECRET;
+    console.log("key " + GITHUB_KEY);
+    console.log("secret " + GITHUB_SECRET.length);
+
+}
+else
+{
+    console.warn("Pass GITHUBTOGO_KEY & GITHUBTOGO_SECRET on the command line");
+}
 
 var USER_CACHE   = 'user_cache';
 var GEO_CACHE    = 'geo_cache';
