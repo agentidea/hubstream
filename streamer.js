@@ -6,6 +6,8 @@ var GitHub      = require('github'),
     Redis       = require('./redis');
 
 var redis = Redis.createClient();
+var GITHUB_KEY = 'CP.FROM.KEYS.SECRET:GITHUB_KEY';
+var GITHUB_SECRET = 'CP.FROM.KEYS.SECRET:GITHUB_SECRET';
 
 var USER_CACHE   = 'user_cache';
 var GEO_CACHE    = 'geo_cache';
@@ -47,8 +49,8 @@ var github = new GitHub({
 
 github.authenticate({
   type: 'oauth',
-  key: '6c386db73e2117d675a9',
-  secret: '43dab3a6bd29a345361c3dc86cb45152fbcfffdc'
+  key: GITHUB_KEY,
+  secret: GITHUB_SECRET
 });
 
 var geoBackoff = 1000;
