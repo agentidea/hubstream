@@ -9,6 +9,12 @@ if (process.env.REDISTOGO_URL) {
   redisPort = rtg.port;
   redisPass = rtg.auth.split(':')[1];
 }
+else
+{
+
+	console.warn("Pass in process.env.REDISTOGO_URL on command line");
+}
+
 
 exports.EVENT_QUEUE = 'event_queue';
 
