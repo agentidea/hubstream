@@ -13,4 +13,7 @@ Using Monit to maintain the services
 ===========================================
 Install Monit.
 
-Instead of starting the services as shown above, turn them off and instead copy the monit scripts into `/etc/monit`. That's it! Within two minutes the services should restart. 
+Instead of starting the services as shown above, turn them off and 
+instead copy the monit scripts into `/etc/monit`. 
+That's it! Within two minutes the services should restart. 
+su/
