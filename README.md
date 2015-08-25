@@ -5,7 +5,7 @@ Streaming Github events
 
 To run
 
-    export REDISTOGO_URL=redis://username:password@host:port/
+    export REDISTOGO_URL=redis://password@host:port/
     web: node web.js
     streamer: node streamer.js
 
