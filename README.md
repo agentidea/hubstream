@@ -1,27 +1,18 @@
 Hubstream
 ===========
 
-Streaming Github events on a Google Map
+Streaming Github events
+
+web: node web.js
+streamer: node streamer.js
 
 Local
 
     git clone git@github.com:agentidea/hubstream.git
-    git checkout visualizations
-
-    at root dir eg: ( cd hubstream )
+    git checkout redisstream
+    at root dir eg: ( cd redisstream )
     sudo npm install
-    sudo npm install -g underscore
-    sudo npm install -g typescript
-    sudo npm install -g grunt
-    sudo npm install -g yo
-    sudo npm install -g generator-angular
-
-    install bower components ( ie angular and bootstrap )
-    change into the angular app dir eg: ( cd hubstream/app )
-    yo angular
-
-
-
+    
 
 Deploy
 
