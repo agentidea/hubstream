@@ -1,4 +1,4 @@
-runStreamer.sh
+*.sh
 node_modules
 dist
 .tmp
