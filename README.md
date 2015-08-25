@@ -3,8 +3,10 @@ Hubstream
 
 Streaming Github events
 
-web: node web.js
-streamer: node streamer.js
+To run
+
+    web: node web.js
+    streamer: node streamer.js
 
 Local
 
